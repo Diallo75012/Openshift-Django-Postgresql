@@ -1,0 +1,68 @@
+
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+	        {% if user.is_authenticated %}
+                <h5>Client: {{ request.user }}</h5>
+                <a href="{% url 'users:logoutuser' %}"><button>Logout</button></a>
+                {% else %}
+                <h5>Client: No one is logged in yet</h5>
+                <a href="{% url 'users:loginuser' %}"><button>Login</button></a>
+                {% endif %}
+		
+		<hr>
+	</div>
+        {% if user.is_authenticated %}
+	<div class="col-md-7">
+		<h5>STOCK INFORMATION</h5>
+		<hr>
+		<div class="card card-body">
+                      <br>
+                      <h3>Nombre d'information dans l'application: {{totalStockInfo}}</h3>
+		      <br>
+                      <a href="{% url 'users:addinfo' %}"><button>Ajouter Information</button></a>
+			<table class="table table-sm">
+				<tr>
+                                        <th>Nom Analyste</th>
+					<th>Code de L'action</th>
+					<th>Pays</th>
+					<th>Industrie</th>
+					<th>Resultat</th>
+					<th>Future Potential</th>
+                                        <th>Montant Dividendes</th>
+                                        <th>Commentaires</th>
+                                        <th>Info. du:</th>
+                                        <th>Supprimer/Modifier</th>
+				</tr>
+
+			{% for info in stock_info %}
+				<tr>
+                                        <td>{{info.user.username}}</td>
+					<td>{{info.codeAction}}</td>
+					<td>{{info.pays}}</td>
+					<td>{{info.industrie}}</td>
+                                        <td>{{info.resultat}}</td>
+                                        <td>{{info.potentiel}}</td>
+                                        <td>{{info.montantDividended}}</td>
+                                        <td>{{info.commentaires}}</td>
+                                        <td>{{info.recordDate}}</td>
+                                        <td><a href={% url 'users:deleteinfo' info.id %}><button>Supprimer</button></a>&nbsp<a href={% url 'users:updateinfo' info.id %}><button>Modifier</button></a></td>
+                                        
+
+				</tr>
+			{% endfor %}
+
+		
+			</table>
+		</div>
+        {% else %}
+            <h5>PLEASE LOGIN TO SEE STOCK REPORTS</h5>
+        {% endif %}
+	</div>
+
+</div>
+
+{% endblock %}

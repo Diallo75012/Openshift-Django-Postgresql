@@ -1,0 +1,13 @@
+{% load static %}
+{% block content %}
+<h1>Enregistrer Nouvelle Information de Cotation Boursiere</h1>
+
+<form action="" method="POST" enctype="multipart/form-data" novalidate>
+    <table>
+    {% csrf_token %}
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}
+

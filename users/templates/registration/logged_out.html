@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <p>Logged out!</p>
+  <a href="{% url 'users:login'%}">Click here to login again.</a>
+{% endblock %}
+
+<!-- The default is taking client to the "Django-admin page" where only "staff" or "superuser" can login.
+     Here we try to send the customer back to the normal user login page -->

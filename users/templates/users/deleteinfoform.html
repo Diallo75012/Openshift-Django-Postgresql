@@ -1,0 +1,10 @@
+{% block content %}
+<h1>Infomation sur Quotation Boursiere a Effacer ?</h1>
+<form  method="post" novalidate>
+<h1>{% csrf_token %}</h1>
+
+<p>Etes-vous sur de vouloir effacer cette quotqtion boursiere ?</p>
+<p>{{ item }}</p>
+<input  type="submit"  value="Submit"  />
+</form>
+{% endblock %}

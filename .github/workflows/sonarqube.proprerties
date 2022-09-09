@@ -1,0 +1,4 @@
+sonar.organization=groupe5
+sonar.projectKey=webappkey
+sonar.sources=.
+sonar.python.coverage.reportPaths=/github/workspace/coverage.xml
