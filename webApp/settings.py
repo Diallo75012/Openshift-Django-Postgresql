@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY_DJANGO','webap-default-h=!ic=tt-b$5-30fsh6&_1j_xk*tmu!2nyy6drd#^841*ymzc%')
+SECRET_KEY = os.getenv('SECRET_KEY_DJANGO','webap-default-h=ic=tt-b$5-30fsh6&_1j_xk*tmu2nyy6drd#^841*ymzc%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -145,9 +145,9 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'file': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': 'logs_webApp.log',
+            'filename': '/var/log/logs_webApp.log',
         },
     },
     'loggers': {
