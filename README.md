@@ -1,12 +1,16 @@
-Projet Groupe 5 - webApp
+Web App for analysts to enter their stock finding. Basic CRUD for the moment. Development for Openshift deployment.
+Still in development, tests have to be done, styling have to be done. 
+
+See basic Instruction down here :
+
 We are deploying the app to Openshift
 We use command line OP CLI for that:
 
-The setting.py has a psotgresql database set up for openshift or for normal django+postgresql project:
+The setting.py has a postgresql database set up for openshift or for normal django+postgresql project:
 To run migrations:
-python3 ./manage.py migrate --database=default
-
-OR either of the commands for one migration.
+python3 manage.py migrate
+BUT migration have already been set in aap.py which is recognized by Openshift that will run all commands listed in that file.
+I used that to launch the server as well with Gunicorn.
 
 We use gunicorn to serve the app in the pod and have a script in app/py that will migrate the database and runserver
 
