@@ -140,6 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # loggings: https://docs.djangoproject.com/en/4.1/topics/logging/#topic-logging-parts-formatters
+"""
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -159,3 +160,4 @@ LOGGING = {
     },
 }
 
+"""
