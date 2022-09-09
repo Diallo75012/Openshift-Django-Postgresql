@@ -3,8 +3,8 @@ Still in development, tests have to be done, styling have to be done.
 
 See basic Instruction down here :
 
-We are deploying the app to Openshift
-We use command line OP CLI for that:
+I are deploying the app to Openshift
+I use command line OP CLI for that:
 
 The setting.py has a postgresql database set up for openshift or for normal django+postgresql project:
 To run migrations:
@@ -12,7 +12,7 @@ python3 manage.py migrate
 BUT migration have already been set in aap.py which is recognized by Openshift that will run all commands listed in that file.
 I used that to launch the server as well with Gunicorn.
 
-We use gunicorn to serve the app in the pod and have a script in app/py that will migrate the database and runserver
+I use gunicorn to serve the app in the pod and have a script in app/py that will migrate the database and runserver
 
 
 
@@ -26,7 +26,20 @@ oc new-app --strategy=source <openshift_compatible_os_image>~<your_github_repo_u
 
 - Create a route when your application is deployed. Deploy Postgresql before your application.
 
-We successfully used: centos/python-38-centos7
+I successfully used: centos/python-38-centos7
+
+For a minimal CI/CD:
+Create more tests (that works)
+Sonarqube and django test will run in Github Actions.
+You need to go settings (of your repository) to create a Webhook:
+From the Openshift console, after running your deployment commands, you need to get the "Developer" Console,
+click on the left side "Builds" tab, Then, Select your application and scroll down, your will see the Webhook part:
+- Get the Github one "With Secret", paste that URL in your Gihub Repository Settings > Webhooks > Add Webhook (Select option for push trigger, select Application/Json), then, save leaving rest to default settings.
+
+From now whenever your push to your upstream branch, you will get the app deployed on Openshift automatically and test running on Github Actions.
+You will be notified by email, if you have set your Github account properly, telling you about the status of the tests.
+
+Enjoy!
 
 
 Routes in the App:
